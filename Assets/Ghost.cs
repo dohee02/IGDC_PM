@@ -11,7 +11,7 @@ public class Ghost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.009f;
+        speed = 5f;
     }
 
     // Update is called once per frame
@@ -25,6 +25,6 @@ public class Ghost : MonoBehaviour
         transform.Translate(new Vector3(
               trans.position.x - transform.position.x
             , trans.position.y - transform.position.y
-            , trans.position.z - transform.position.z).normalized * speed);
+            , trans.position.z - transform.position.z).normalized*Time.deltaTime * speed);
     }
 }

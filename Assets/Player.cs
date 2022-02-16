@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.01f;
+        speed = 10f;
     }
 
     // Update is called once per frame
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
             moveX += 1f;
         }
 
-        transform.Translate(new Vector3(moveX, 0f, moveZ).normalized * speed);
+        transform.Translate(new Vector3(moveX, 0f, moveZ).normalized *Time.deltaTime* speed);
 
 
     }
