@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public float speed;
 
+    public GameObject gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,24 @@ public class Player : MonoBehaviour
 
         transform.Translate(new Vector3(moveX, 0f, moveZ).normalized *Time.deltaTime* speed);
 
+   
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Coin")
+        {
+            gameManager.GetComponent<GameManager>().RaiseScore(1);
+        }
+        else if (collision.gameObject.name == "Ghost")
+        {
+            Debug.Log("Over");
+            speed = 0;
+            Destroy(collision.gameObject);
+        }
+
 
     }
+
+    
 }
